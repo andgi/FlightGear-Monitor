@@ -1,0 +1,69 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Monitor.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>interior.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <!-- Rembrandt transparency markup. -->
+ <!-- effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>car_windows</object-name>
+  <object-name>car_windows.2</object-name>
+ </effect -->
+
+ <model>
+  <name>Port boiler port furnace</name>
+  <path>Aircraft/Monitor/Models/Effects/fire.xml</path>
+  <offsets>
+   <x-m> 31.35 </x-m>
+   <y-m> -1.92 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Port boiler starboard furnace</name>
+  <path>Aircraft/Monitor/Models/Effects/fire.xml</path>
+  <offsets>
+   <x-m> 31.35 </x-m>
+   <y-m> -0.72 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Starboard boiler port furnace</name>
+  <path>Aircraft/Monitor/Models/Effects/fire.xml</path>
+  <offsets>
+   <x-m> 31.35 </x-m>
+   <y-m>  0.72 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Starboard boiler starboard furnace</name>
+  <path>Aircraft/Monitor/Models/Effects/fire.xml</path>
+  <offsets>
+   <x-m> 31.35 </x-m>
+   <y-m>  1.92 </y-m>
+   <z-m>  1.00 </z-m>
+  </offsets>
+ </model>
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>500</max-m>
+ </animation>
+
+</PropertyList>

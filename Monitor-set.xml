@@ -1,0 +1,501 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Monitor.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <sim>
+
+  <description>U.S.S. Monitor.</description>
+  <author>Anders Gidenstam</author>
+  <status>development</status>
+  <aircraft-version>$Id$</aircraft-version>
+  
+  <flight-model>jsb</flight-model>
+  <aero>USS_Monitor</aero>
+
+  <presets>
+   <onground type="bool">true</onground>
+   <!-- altitude-agl-ft type="double">6.0</altitude-agl-ft -->
+  </presets>
+  <startup>
+   <!-- splash-texture>Aircraft/Monitor/splash.png</splash-texture -->
+  </startup>
+
+  <!-- 3d model -->
+  <model>
+   <path>Aircraft/Monitor/Models/Monitor.xml</path>
+  </model>
+
+  <!-- Views -->
+  <view n="0">
+   <!-- Pilot's position. -->
+   <name>Pilot View</name>
+   <internal>true</internal>
+   <config>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  0.000 </x-offset-m>
+    <y-offset-m type="double">  4.575 </y-offset-m>
+    <z-offset-m type="double">  7.637 </z-offset-m>
+    <pitch-offset-deg type="double"> 0.0 </pitch-offset-deg>
+   </config>
+  </view>
+
+  <view n="100">
+   <name>Turret View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double"> -2.00 </x-offset-m>
+    <y-offset-m type="double">  3.70 </y-offset-m>
+    <z-offset-m type="double"> 25.45 </z-offset-m>
+   </config>
+  </view>
+
+  <view n="101">
+   <name>Engineer View</name>
+   <type>lookfrom</type>
+   <internal type="bool">true</internal>
+   <config>
+    <from-model type="bool">true</from-model>
+    <from-model-idx type="int">0</from-model-idx>
+    <!-- x/y/z == right/up/back -->
+    <x-offset-m type="double">  0.00 </x-offset-m>
+    <y-offset-m type="double">  2.50 </y-offset-m>
+    <z-offset-m type="double"> 34.00 </z-offset-m>
+    <heading-offset-deg type="double"> 180 </heading-offset-deg>
+    <default-heading-offset-deg type="double"> 180 </default-heading-offset-deg>
+    <pitch-offset-deg type="double"> 0 </pitch-offset-deg>
+   </config>
+  </view>
+
+  <!-- Move the center of the external views. -->
+  <view n="1">
+   <config>
+    <target-z-offset-m> 20.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="2">
+   <config>
+    <target-z-offset-m> 20.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="3">
+   <config>
+    <target-z-offset-m> 20.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="5">
+   <config>
+    <target-z-offset-m> 20.0 </target-z-offset-m>
+   </config>
+  </view>
+  <view n="6">
+   <config>
+    <target-z-offset-m> 20.0 </target-z-offset-m>
+   </config>
+  </view>
+
+  <chase-distance-m type="double">-120.0</chase-distance-m>
+
+  <!-- sound>
+   <audible>true</audible>
+   <path>Aircraft/Submarine_Scout/Sounds/Submarine_Scout-sound.xml</path>
+  </sound -->
+
+  <!-- Aircraft specific help. -->
+  <!-- help include="help.xml"/ -->
+
+  <systems>
+   <electrical>
+    <path/>
+   </electrical>
+  </systems>
+  <instrumentation>
+   <!-- path>Aircraft/Submarine_Scout/Systems/instrumentation.xml</path -->
+  </instrumentation>
+
+  <!-- Armament etc. -->
+  <!-- submodels>
+   <serviceable type="bool">true</serviceable>
+   <path></path>
+  </submodels -->
+
+  <multiplay>
+   <generic>
+   </generic>
+  </multiplay>
+
+  <max-simtime-per-frame n="0" type="double">0.1</max-simtime-per-frame>
+
+  <menubar>
+   <default>
+    <menu n="100">
+     <label>USS Monitor</label>
+     <item>
+      <label>About</label>
+      <binding>
+       <command>nasal</command>
+       <script>Monitor.about()</script>
+      </binding>
+     </item>
+    </menu>
+   </default>
+  </menubar>
+
+ </sim>
+
+ <controls>
+  <armament>
+   <!-- Left side -->
+   <station n="0">
+    <!-- present alias="/sim/multiplay/generic/int[0]"/ -->
+   </station>
+   <!-- Right side -->
+   <station n="1">
+    <!-- present alias="/sim/multiplay/generic/int[1]"/ -->
+   </station>
+   <training-mode type="bool">false</training-mode> 
+  </armament>
+ </controls>
+
+ <payload>
+  <weight>
+   <name type="string">Coal in port bunker</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[0]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Coal in starboard bunker</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[1]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Water in the starboard boiler</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[2]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">20900.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Water in the port boiler</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[3]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">20900.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Stores</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[4]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">30000.0</max-lb>
+  </weight>
+  <weight>
+   <name type="string">Ammunition and powder</name>
+   <weight-lb alias="/fdm/jsbsim/inertia/pointmass-weight-lbs[5]"/>
+   <min-lb type="double">0.0</min-lb>
+   <max-lb type="double">50000.0</max-lb>
+  </weight>
+ </payload>
+
+ <!-- instrumentation n="0">
+ </instrumentation -->
+
+ <nasal>
+  <!-- SubmarineScout>
+   <file>Aircraft/Submarine_Scout/Systems/electrical.nas</file>
+   <file>Aircraft/Submarine_Scout/Systems/submarine-scout.nas</file>
+  </SubmarineScout -->
+  <Monitor>
+   <script>
+###############################################################################
+var ground = func {
+    setprop("/fdm/jsbsim/hydro/water-level-ft",
+            getprop("/position/ground-elev-ft"));
+
+    settimer(ground, 0.0);
+}
+
+settimer(ground, 0.0);
+
+# On-screen displays
+var left  = screen.display.new(20, 10);
+var right = screen.display.new(-200, 10);
+
+left.add("/fdm/jsbsim/sim-time-sec");
+left.add("/sim/crashed");
+left.add("/fdm/jsbsim/hydro/height-agl-ft");
+left.add("/orientation/heading-deg");
+left.add("/fdm/jsbsim/hydro/beta-deg");
+left.add("/fdm/jsbsim/hydro/pitch-deg");
+left.add("/fdm/jsbsim/hydro/roll-deg");
+left.add("/fdm/jsbsim/inertia/cg-x-in");
+left.add("/fdm/jsbsim/inertia/cg-z-in");
+left.add("/fdm/jsbsim/fcs/rudder-pos-norm");
+#left.add("/fdm/jsbsim/");
+#left.add("/fdm/jsbsim/");
+
+right.add("/fdm/jsbsim/hydro/v-fps");
+right.add("/fdm/jsbsim/hydro/vbx-fps");
+right.add("/fdm/jsbsim/hydro/vby-fps");
+#right.add("/fdm/jsbsim/hydro/qbar-u-psf");
+#right.add("/fdm/jsbsim/hydro/qbar-v-psf");
+#right.add("/fdm/jsbsim/hydro/fbx-lbs");
+#right.add("/fdm/jsbsim/hydro/fby-lbs");
+right.add("/fdm/jsbsim/hydro/fdrag-lbs");
+right.add("/fdm/jsbsim/hydro/fbz-lbs");
+right.add("/fdm/jsbsim/hydro/X/force-lbs");
+right.add("/fdm/jsbsim/hydro/Y/force-lbs");
+right.add("/fdm/jsbsim/hydro/yaw-moment-lbsft");
+right.add("/fdm/jsbsim/hydro/pitch-moment-lbsft");
+right.add("/fdm/jsbsim/hydro/roll-moment-lbsft");
+right.add("/fdm/jsbsim/propulsion/engine/engine-rpm");
+right.add("/fdm/jsbsim/propulsion/engine/advance-ratio");
+right.add("/fdm/jsbsim/propulsion/engine/thrust-lbs");
+right.add("/fdm/jsbsim/propulsion/engine/power-required-hp");
+#right.add("/fdm/jsbsim/");
+
+###############################################################################
+   </script>
+  </Monitor>
+  <!-- Walk View -->
+  <walkview>
+   <file>Aircraft/Generic/WalkView/walkview.nas</file>
+  </walkview>
+  <walkviews>
+   <script>
+###############################################################################
+# Constraints
+
+# Turret floor
+var turretFloor =
+    walkview.CircularXYSurface.new([25.45, 0.00, 3.70], 2.90);
+
+# Turret roof
+var turretRoof =
+    walkview.CircularXYSurface.new([25.45, 0.00, 6.28], 2.90);
+
+# Berth deck
+var berthDeck = walkview.makeUnionConstraint
+    (
+     [walkview.LinePlane.new([7.00,  0.00, 0.87], [12.79, 0.00, 0.87], 3.0),
+      walkview.LinePlane.new([12.79, 0.00, 0.50], [25.60, 0.00, 0.50], 5.0),
+      # Main bulkhead doors.
+      walkview.LinePlane.new([25.60,-2.21, 0.33], [25.80,-2.21, 0.33], 0.3),
+      walkview.LinePlane.new([25.60, 2.21, 0.33], [25.80, 2.21, 0.33], 0.3),
+      # Galley
+      walkview.LinePlane.new([25.80, 0.00, 0.33], [26.90, 0.00, 0.33], 6.0),
+      # Outside the boilers.
+      walkview.LinePlane.new([26.90,-2.85, 0.33], [32.40,-2.85, 0.33], 0.3),
+      walkview.LinePlane.new([26.90, 2.85, 0.33], [32.50, 2.85, 0.33], 0.3),
+      # Aft of the boilers.
+      walkview.LinePlane.new([32.50, 0.00, 0.33], [33.50, 0.00, 0.33], 6.0),
+      walkview.LinePlane.new([33.50, 0.00, 0.33], [35.50, 0.00, 0.33], 5.0)
+     ]);
+
+# Create the view managers.
+var turret_walker = walkview.Walker.new("Turret View",
+                                        turretFloor);
+#                                       [walkview.JSBSimPointmass.new(27)]);
+var berth_deck_walker = walkview.Walker.new("Engineer View",
+                                            berthDeck);
+#                                           [walkview.JSBSimPointmass.new(28)]);
+
+###############################################################################
+   </script>
+  </walkviews>
+ </nasal>
+
+ <input>
+  <keyboard>
+   <!-- Keyboard commands -->
+
+   <!-- Walkview commands ======================================== -->
+   <key n="87"> 
+    <name>W</name>
+    <desc>WalkView: walk forward.</desc>
+    <binding> 
+     <command>nasal</command>
+     <script>
+       if (!walkview.forward(4.0)) {
+       }
+     </script>     
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.forward(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+   <key n="119">
+    <name>w</name>
+    <desc>WalkView: walk forward.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if (!walkview.forward(1.0)) {
+       }
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.forward(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+   <key n="100">
+    <name>d</name>
+    <desc>WalkView: step right.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if (!walkview.side_step(0.5)) {
+       }
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.side_step(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+   <key n="68">
+    <name>D</name>
+    <desc>WalkView: step right.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if (!walkview.side_step(1.0)) {
+       }
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.side_step(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+   <key n="97">
+    <name>a</name>
+    <desc>WalkView: step left.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+      <![CDATA[
+       if (!walkview.side_step(-0.5)) {
+       }
+      ]]>
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.side_step(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+   <key n="65">
+    <name>A</name>
+    <desc>WalkView: step left.</desc>
+    <repeatable type="bool">true</repeatable>
+    <binding>
+     <command>nasal</command>
+     <script>
+      <![CDATA[
+       if (!walkview.side_step(-1.0)) {
+       }
+      ]]>
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.side_step(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+   <key n="115">
+    <name>s</name>
+    <desc>WalkView: walk backwards.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       if (!walkview.forward(-1.0)) {
+           controls.startEngine(1);
+       }
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.forward(0);
+        controls.startEngine(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+   <!-- Remove this if you for some reason have 2d panels and want the default
+        Swap panels function on 'S'.
+   -->
+   <key n="83">
+    <name>S</name>
+    <desc>WalkView: walk backwards.</desc>
+    <binding>
+     <command>nasal</command>
+     <script>
+       walkview.forward(-1.0);
+     </script>
+    </binding>
+    <mod-up>
+     <binding>
+      <command>nasal</command>
+      <script>
+        walkview.forward(0);
+      </script>
+     </binding>
+    </mod-up>
+   </key>
+
+  </keyboard>
+ </input>
+
+ <fdm>
+  <jsbsim>
+   <fcs>
+    <throttle-cmd-norm alias="/controls/engines/engine/throttle"/>
+   </fcs>
+  </jsbsim>
+ </fdm>
+
+</PropertyList>

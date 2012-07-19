@@ -1,0 +1,86 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Monitor.
+
+  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <path>Monitor.ac</path>
+ <offsets>
+  <!-- x/y/z == back/right/up -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <!-- Rembrandt transparency markup. -->
+ <!-- effect>
+  <inherits-from>Effects/model-transparent</inherits-from>
+  <object-name>car_windows</object-name>
+  <object-name>car_windows.2</object-name>
+ </effect -->
+
+ <model>
+  <name>Interior</name>
+  <path>Aircraft/Monitor/Models/Interior/interior.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 0.00 </x-m>
+   <y-m> 0.00 </y-m>
+   <z-m> 0.00 </z-m>
+  </offsets>
+ </model>
+
+ <model>
+  <name>Port boiler smoke</name>
+  <path>Aircraft/Monitor/Models/Effects/smoke.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 32.66 </x-m>
+   <y-m> -1.32 </y-m>
+   <z-m>  3.60 </z-m>
+  </offsets>
+ </model>
+ <model>
+  <name>Starboard boiler smoke</name>
+  <path>Aircraft/Monitor/Models/Effects/smoke.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m> 32.66 </x-m>
+   <y-m>  1.32 </y-m>
+   <z-m>  3.60 </z-m>
+  </offsets>
+ </model>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>turret_armor</object-name>
+  <object-name>turret_roof_beams</object-name>
+  <object-name>gun.L</object-name>
+  <object-name>gun.R</object-name>
+  <property>sim/model/turret-bearing-deg</property>
+  <factor>-1.0</factor>
+  <offset-deg>90.0</offset-deg>
+  <center>
+   <x-m> 25.45 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  0.00 </z-m>
+  </center>
+  <axis>
+   <x> 0.0 </x>
+   <y> 0.0 </y>
+   <z> 1.0 </z>
+  </axis>
+ </animation>
+
+
+ <!-- LOD for the model as a whole -->
+ <animation>
+  <type>range</type>
+  <min-m>0</min-m>
+  <max-m>30000</max-m>
+ </animation>
+
+</PropertyList>
