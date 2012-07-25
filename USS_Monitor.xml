@@ -51,14 +51,22 @@
    GNU General Public License for more details.
   </note>
 
-  <reference refID="Peterkin:1985:DRM"
-             author="Ernest W. Peterkin"
-             title="Drawings of the U.S.S. Monitor"
-             date="1985"/>
   <reference refID="Miller:1974:PC"
              author="Edward M. Miller (ed.)"
              title="Project Cheesebox - A journey into history"
              date="1974"/>
+  <reference refID="Peterkin:1985:DRM"
+             author="Ernest W. Peterkin"
+             title="Drawings of the U.S.S. Monitor"
+             date="1985"/>
+  <reference refID="Ripper:1909:HE"
+             author="William Ripper"
+             title="Heat Engines"
+             date="1909"/>
+  <reference refID="Ripper:1922:SE"
+             author="William Ripper"
+             title="Steam-Engine  Theory and Practice"
+             date="1922"/>
 
  </fileheader>
 
@@ -520,7 +528,7 @@
 
    <!-- Wild guess: D = K A q_inf -->
    <!-- A = cross sectional area (ft^2); -->
-   <function name="aero/coefficient/CDturret">
+   <function name="aero/force/D_turret">
     <description>Drag</description>
     <product>
      <property>aero/qbar-psf</property>

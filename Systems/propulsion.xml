@@ -26,17 +26,38 @@
    Known:
      Propeller ([Peterkin:1985:DRM], drawing no. 131, page 343)
        Diameter 9 ft, pitch 16 ft, diameter of hub 18 in.
+     Boilers
+       40 psi.        ([Miller:1974:PC], page 110)
      Engine
+       Double cylinder 40 in diameter, 22 in stroke.
+       ([Miller:1974:PC], page 109)
        Power 400 hp. ([Miller:1974:PC], page 145)
 
  </documentation>
 
  <property>fcs/throttle-cmd-norm</property>
 
- <channel name="engine">
+ <channel name="boilers">
+  <!-- Temporary system that just outputs the absolute pressure. -->
+
+  <fcs_function name="propulsion/boiler/steam-absolute-pressure-psi">
+   <function>
+    <sum>
+     <value>40.0</value> <!-- Boiler steam pressure. -->
+     <product>
+      <value>0.0069444444</value> <!-- PSF to PSI. -->
+      <property>atmosphere/P-psf</property>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+ </channel>
+
+ <channel name="no engine model">
 
   <!-- Temporary system that just sets the engine RPM. -->
-  <fcs_function name="propulsion/engine/engine-rpm">
+  <!-- fcs_function name="propulsion/engine/engine-rpm">
    <function>
     <table>
      <independentVar lookup="row">fcs/throttle-cmd-norm</independentVar>
@@ -46,7 +67,82 @@
       </tableData>     
     </table>
    </function>
+  </fcs_function -->
+
+ </channel>
+
+ <channel name="simple steam engine model">
+
+  <!-- Temporary system that just sets the engine mean effective pressure.
+
+       The slide valves of the engine were most likely set to only admit full
+       pressure steam for part of the stroke to utilize steam expansion.
+       The effective mean pressure is then
+         p = p_init * (1 + log R)/R - back pressure
+       where R is the range of expansion, i.e.
+       volume at cutoff / volume at end of stroke.
+  -->
+  <fcs_function name="propulsion/engine/steam-mean-pressure-psi">
+   <function>
+    <product>
+     <sum>
+      <product>
+       <property>propulsion/boiler/steam-absolute-pressure-psi</property>
+       <value>0.65</value> <!-- Assumed cut-off at 1/2 stroke. -->
+      </product>
+      <value>-7.0</value> <!-- Condenser back-pressure. Guessed. -->
+     </sum>
+     <table>
+      <independentVar lookup="row">fcs/throttle-cmd-norm</independentVar>
+      <tableData>
+        0.0    0.0
+        1.0    1.0
+      </tableData>     
+     </table>
+    </product>
+   </function>
   </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-available-hp">
+   <!-- IHP = P*L*A*N/33000 [Ripper:1909:HE]. Units differ slightly here. -->
+   <function>
+    <sum>
+     <product>
+      <value>0.90</value>          <!-- Efficiency IHP to BHP.
+                                        ~0.9 according to [Ripper:1909:HE].
+                                   -->
+      <value>2.5252525e-06</value> <!-- To HP. -->
+      <value>4.0</value>           <!-- 2 double acting cylinders. -->
+      <property>propulsion/engine/steam-mean-pressure-psi</property>
+      <value>27646.015</value>     <!-- Swept volume per cylinder. in^3. -->
+      <property>propulsion/engine/engine-rpm</property>
+     </product>
+     <product>
+      <value>-0.035</value> <!-- Guess. Fricition. -->
+      <property>propulsion/engine/engine-rpm</property>
+      <property>propulsion/engine/engine-rpm</property>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="propulsion/engine/power-difference-hp">
+   <function>
+    <difference>
+     <property>propulsion/engine/power-available-hp</property>
+     <property>propulsion/engine/power-required-hp</property>
+    </difference>
+   </function>
+  </fcs_function>
+
+  <integrator name="propulsion/engine/engine-rpm">
+   <input>propulsion/engine/power-difference-hp</input>
+   <c1>0.2</c1>
+   <clipto>
+    <min>0.0000001</min>
+    <max>240.0</max>
+   </clipto>
+  </integrator>
 
  </channel>
 
@@ -197,7 +293,6 @@
      <property>propulsion/engine/power-coefficient</property>
     </product>
    </function>
-   <output>external_reactions/propeller/magnitude</output>
   </fcs_function>
 
  </channel>

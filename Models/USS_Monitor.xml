@@ -56,10 +56,19 @@
 
  <animation>
   <type>rotate</type>
+  <object-name>turret_axis</object-name>
+  <object-name>turret_stanchions</object-name>
   <object-name>turret_armor</object-name>
+  <object-name>turret_braces</object-name>
+  <object-name>turret_floor_beams</object-name>
+  <object-name>turret_flooring</object-name>
   <object-name>turret_roof_beams</object-name>
+  <object-name>turret_roof</object-name>
   <object-name>gun.L</object-name>
   <object-name>gun.R</object-name>
+  <object-name>gun_carriage.L</object-name>
+  <object-name>gun_carriage.R</object-name>
+  <object-name>gun_friction_beams</object-name>
   <property>sim/model/turret-bearing-deg</property>
   <factor>-1.0</factor>
   <offset-deg>90.0</offset-deg>
