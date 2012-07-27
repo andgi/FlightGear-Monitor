@@ -11,9 +11,17 @@
 
   <description>U.S.S. Monitor.</description>
   <author>Anders Gidenstam</author>
-  <status>development</status>
   <aircraft-version>$Id$</aircraft-version>
-  
+  <status>development</status>
+
+  <!-- status type="string">alpha</status>
+  <rating>
+   <FDM type="int">2</FDM>
+   <systems type="int">2</systems>
+   <cockpit type="int">1</cockpit>
+   <model type="int">2</model>
+  </rating -->
+
   <flight-model>jsb</flight-model>
   <aero>USS_Monitor</aero>
 
@@ -22,7 +30,7 @@
    <!-- altitude-agl-ft type="double">6.0</altitude-agl-ft -->
   </presets>
   <startup>
-   <!-- splash-texture>Aircraft/Monitor/splash.png</splash-texture -->
+   <splash-texture>Aircraft/Monitor/splash.png</splash-texture>
   </startup>
 
   <!-- 3d model -->
