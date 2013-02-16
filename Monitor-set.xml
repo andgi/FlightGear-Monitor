@@ -2,7 +2,7 @@
 <!--
   U.S.S. Monitor.
 
-  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2012 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -175,14 +175,6 @@
 
  <controls>
   <armament>
-   <!-- Left side -->
-   <station n="0">
-    <!-- present alias="/sim/multiplay/generic/int[0]"/ -->
-   </station>
-   <!-- Right side -->
-   <station n="1">
-    <!-- present alias="/sim/multiplay/generic/int[1]"/ -->
-   </station>
    <training-mode type="bool">false</training-mode> 
   </armament>
  </controls>
@@ -230,10 +222,6 @@
  </instrumentation -->
 
  <nasal>
-  <!-- SubmarineScout>
-   <file>Aircraft/Submarine_Scout/Systems/electrical.nas</file>
-   <file>Aircraft/Submarine_Scout/Systems/submarine-scout.nas</file>
-  </SubmarineScout -->
   <Monitor>
    <script>
 ###############################################################################
@@ -367,179 +355,8 @@ var berth_deck_walker =
  </nasal>
 
  <input>
-  <keyboard>
+  <keyboard include="Aircraft/Generic/WalkView/walk-view-keys.xml">
    <!-- Keyboard commands -->
-
-   <!-- Walkview commands ======================================== -->
-   <key n="87"> 
-    <name>W</name>
-    <desc>WalkView: walk forward.</desc>
-    <binding> 
-     <command>nasal</command>
-     <script>
-       if (!walkview.forward(4.0)) {
-       }
-     </script>     
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.forward(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-
-   <key n="119">
-    <name>w</name>
-    <desc>WalkView: walk forward.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>
-       if (!walkview.forward(1.0)) {
-       }
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.forward(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-
-   <key n="100">
-    <name>d</name>
-    <desc>WalkView: step right.</desc>
-    <repeatable type="bool">true</repeatable>
-    <binding>
-     <command>nasal</command>
-     <script>
-       if (!walkview.side_step(0.5)) {
-       }
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.side_step(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-
-   <key n="68">
-    <name>D</name>
-    <desc>WalkView: step right.</desc>
-    <repeatable type="bool">true</repeatable>
-    <binding>
-     <command>nasal</command>
-     <script>
-       if (!walkview.side_step(1.0)) {
-       }
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.side_step(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-
-   <key n="97">
-    <name>a</name>
-    <desc>WalkView: step left.</desc>
-    <repeatable type="bool">true</repeatable>
-    <binding>
-     <command>nasal</command>
-     <script>
-      <![CDATA[
-       if (!walkview.side_step(-0.5)) {
-       }
-      ]]>
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.side_step(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-   <key n="65">
-    <name>A</name>
-    <desc>WalkView: step left.</desc>
-    <repeatable type="bool">true</repeatable>
-    <binding>
-     <command>nasal</command>
-     <script>
-      <![CDATA[
-       if (!walkview.side_step(-1.0)) {
-       }
-      ]]>
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.side_step(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-
-   <key n="115">
-    <name>s</name>
-    <desc>WalkView: walk backwards.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>
-       if (!walkview.forward(-1.0)) {
-           controls.startEngine(1);
-       }
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.forward(0);
-        controls.startEngine(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
-   <!-- Remove this if you for some reason have 2d panels and want the default
-        Swap panels function on 'S'.
-   -->
-   <key n="83">
-    <name>S</name>
-    <desc>WalkView: walk backwards.</desc>
-    <binding>
-     <command>nasal</command>
-     <script>
-       walkview.forward(-1.0);
-     </script>
-    </binding>
-    <mod-up>
-     <binding>
-      <command>nasal</command>
-      <script>
-        walkview.forward(0);
-      </script>
-     </binding>
-    </mod-up>
-   </key>
 
   </keyboard>
  </input>
