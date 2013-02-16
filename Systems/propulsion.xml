@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -90,7 +90,7 @@
        <property>propulsion/boiler/steam-absolute-pressure-psi</property>
        <value>0.65</value> <!-- Assumed cut-off at 1/2 stroke. -->
       </product>
-      <value>-7.0</value> <!-- Condenser back-pressure. Guessed. -->
+      <value>-6.0</value> <!-- Condenser back-pressure. Guessed. -->
      </sum>
      <table>
       <independentVar lookup="row">fcs/throttle-cmd-norm</independentVar>
@@ -112,9 +112,13 @@
                                         ~0.9 according to [Ripper:1909:HE].
                                    -->
       <value>2.5252525e-06</value> <!-- To HP. -->
-      <value>4.0</value>           <!-- 2 double acting cylinders. -->
+      <value>2.0</value>           <!-- 2 double acting cylinders. -->
       <property>propulsion/engine/steam-mean-pressure-psi</property>
-      <value>27646.015</value>     <!-- Swept volume per cylinder. in^3. -->
+      <sum>
+       <!-- in^3 -->
+       <value>27646.015</value>  <!-- Swept volume per cylinder out-stroke. -->
+       <value>23758.294</value>  <!-- Swept volume per cylinder in-stroke.  -->
+      </sum>
       <property>propulsion/engine/engine-rpm</property>
      </product>
      <product>
