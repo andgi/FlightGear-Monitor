@@ -271,6 +271,7 @@ right.add("/fdm/jsbsim/propulsion/engine/power-required-hp");
 right.add("/fdm/jsbsim/propulsion/engine/engine-rpm");
 right.add("/fdm/jsbsim/propulsion/engine/advance-ratio");
 right.add("/fdm/jsbsim/propulsion/engine/thrust-lbs");
+right.add("/fdm/jsbsim/propulsion/engine/shaft-position-norm");
 #right.add("/fdm/jsbsim/");
 
 ###############################################################################
@@ -365,6 +366,7 @@ var berth_deck_walker =
   <jsbsim>
    <fcs>
     <throttle-cmd-norm alias="/controls/engines/engine/throttle"/>
+    <mixture-cmd-norm  alias="/controls/engines/engine/mixture"/>
    </fcs>
   </jsbsim>
  </fdm>

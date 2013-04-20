@@ -2,7 +2,7 @@
 <!--
   U.S.S. Monitor.
 
-  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2012 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -21,6 +21,17 @@
   <object-name>car_windows</object-name>
   <object-name>car_windows.2</object-name>
  </effect -->
+
+ <model>
+  <name>Steam engine</name>
+  <path>Aircraft/Monitor/Models/Interior/steam_engine.xml</path>
+  <offsets>
+   <heading-deg>180.00</heading-deg>
+   <x-m> 36.30 </x-m>
+   <y-m>  0.00 </y-m>
+   <z-m>  2.10 </z-m>
+  </offsets>
+ </model>
 
  <model>
   <name>Port boiler port furnace</name>

@@ -1,0 +1,158 @@
+<?xml version="1.0"?>
+<!--
+  U.S.S. Monitor.
+
+  Copyright (C) 2013  Anders Gidenstam  (anders(at)gidenstam.org)
+  This file is licensed under the GPL license version 2 or later.
+-->
+<PropertyList>
+
+ <!-- Overlay these to set the controlling properties. -->
+ <params>
+  <shaft-pos-norm>fdm/jsbsim/propulsion/engine/shaft-position-norm</shaft-pos-norm>
+ </params>
+
+ <path>steam_engine.ac</path>
+ <offsets>
+  <!-- x/y/z == forward/left/up -->
+  <!-- The origin is in the center of the cylinder barrel. -->
+  <x-m> 0.00 </x-m>
+  <y-m> 0.00 </y-m>
+  <z-m> 0.00 </z-m>
+ </offsets>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>MainCrankShaft</object-name>
+  <property alias="../../params/shaft-pos-norm"/>
+  <factor>360.0</factor>
+  <offset-deg>0.0</offset-deg>
+  <center>
+   <x-m> 0.0000</x-m>
+   <y-m> 0.0000</y-m>
+   <z-m>-0.6858</z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RockShaft.PT</object-name>
+  <property alias="../../params/shaft-pos-norm"/>
+  <interpolation>
+   <entry><ind>0.00</ind><dep>-40.000</dep></entry>
+   <entry><ind>0.05</ind><dep>-38.042</dep></entry>
+   <entry><ind>0.10</ind><dep>-32.361</dep></entry>
+   <entry><ind>0.25</ind><dep>  0.000</dep></entry>
+   <entry><ind>0.40</ind><dep> 32.361</dep></entry>
+   <entry><ind>0.45</ind><dep> 38.042</dep></entry>
+   <entry><ind>0.50</ind><dep> 40.000</dep></entry>
+   <entry><ind>0.55</ind><dep> 38.042</dep></entry>
+   <entry><ind>0.60</ind><dep> 32.361</dep></entry>
+   <entry><ind>0.75</ind><dep>  0.000</dep></entry>
+   <entry><ind>0.90</ind><dep>-32.361</dep></entry>
+   <entry><ind>0.95</ind><dep>-38.042</dep></entry>
+   <entry><ind>1.00</ind><dep>-40.000</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.0000</x-m>
+   <y-m> 1.6637</y-m>
+   <z-m>-0.5715</z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>rotate</type>
+  <object-name>RockShaft.SB</object-name>
+  <property alias="../../params/shaft-pos-norm"/>
+  <interpolation>
+   <entry><ind>0.00</ind><dep>-40.000</dep></entry>
+   <entry><ind>0.05</ind><dep>-38.042</dep></entry>
+   <entry><ind>0.10</ind><dep>-32.361</dep></entry>
+   <entry><ind>0.25</ind><dep>  0.000</dep></entry>
+   <entry><ind>0.40</ind><dep> 32.361</dep></entry>
+   <entry><ind>0.45</ind><dep> 38.042</dep></entry>
+   <entry><ind>0.50</ind><dep> 40.000</dep></entry>
+   <entry><ind>0.55</ind><dep> 38.042</dep></entry>
+   <entry><ind>0.60</ind><dep> 32.361</dep></entry>
+   <entry><ind>0.75</ind><dep>  0.000</dep></entry>
+   <entry><ind>0.90</ind><dep>-32.361</dep></entry>
+   <entry><ind>0.95</ind><dep>-38.042</dep></entry>
+   <entry><ind>1.00</ind><dep>-40.000</dep></entry>
+  </interpolation>
+  <center>
+   <x-m> 0.0000</x-m>
+   <y-m>-1.6637</y-m>
+   <z-m>-0.5715</z-m>
+  </center>
+  <axis>
+   <x> 1.0 </x>
+   <y> 0.0 </y>
+   <z> 0.0 </z>
+  </axis>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>toggle</object-name>
+  <object-name>Trunk.PT</object-name>
+  <property alias="../../params/shaft-pos-norm"/>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <interpolation>
+   <entry><ind>0.00</ind><dep>0.0</dep></entry>
+   <entry><ind>0.05</ind><dep>-0.01367</dep></entry>
+   <entry><ind>0.10</ind><dep>-0.05336</dep></entry>
+   <entry><ind>0.25</ind><dep>-0.27940</dep></entry>
+   <entry><ind>0.40</ind><dep>-0.50544</dep></entry>
+   <entry><ind>0.45</ind><dep>-0.54513</dep></entry>
+   <entry><ind>0.50</ind><dep>-0.5588</dep></entry>
+   <entry><ind>0.55</ind><dep>-0.54513</dep></entry>
+   <entry><ind>0.60</ind><dep>-0.50544</dep></entry>
+   <entry><ind>0.75</ind><dep>-0.27940</dep></entry>
+   <entry><ind>0.90</ind><dep>-0.05336</dep></entry>
+   <entry><ind>0.95</ind><dep>-0.01367</dep></entry>
+   <entry><ind>1.00</ind><dep>0.0</dep></entry>
+  </interpolation>
+ </animation>
+
+ <animation>
+  <type>translate</type>
+  <object-name>toggle</object-name>
+  <object-name>Trunk.SB</object-name>
+  <property alias="../../params/shaft-pos-norm"/>
+  <axis>
+   <x>0</x>
+   <y>1</y>
+   <z>0</z>
+  </axis>
+  <interpolation>
+   <entry><ind>0.00</ind><dep>0.0</dep></entry>
+   <entry><ind>0.05</ind><dep>-0.01367</dep></entry>
+   <entry><ind>0.10</ind><dep>-0.05336</dep></entry>
+   <entry><ind>0.25</ind><dep>-0.27940</dep></entry>
+   <entry><ind>0.40</ind><dep>-0.50544</dep></entry>
+   <entry><ind>0.45</ind><dep>-0.54513</dep></entry>
+   <entry><ind>0.50</ind><dep>-0.5588</dep></entry>
+   <entry><ind>0.55</ind><dep>-0.54513</dep></entry>
+   <entry><ind>0.60</ind><dep>-0.50544</dep></entry>
+   <entry><ind>0.75</ind><dep>-0.27940</dep></entry>
+   <entry><ind>0.90</ind><dep>-0.05336</dep></entry>
+   <entry><ind>0.95</ind><dep>-0.01367</dep></entry>
+   <entry><ind>1.00</ind><dep>0.0</dep></entry>
+  </interpolation>
+ </animation>
+
+</PropertyList>
