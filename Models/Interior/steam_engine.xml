@@ -42,6 +42,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RockShaft.PT</object-name>
+  <object-name>VLever.PT</object-name>
   <property alias="../../params/shaft-pos-norm"/>
   <interpolation>
    <entry><ind>0.00</ind><dep>-40.000</dep></entry>
@@ -73,6 +74,7 @@
  <animation>
   <type>rotate</type>
   <object-name>RockShaft.SB</object-name>
+  <object-name>VLever.SB</object-name>
   <property alias="../../params/shaft-pos-norm"/>
   <interpolation>
    <entry><ind>0.00</ind><dep>-40.000</dep></entry>
