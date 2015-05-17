@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012 - 2013  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -328,7 +328,7 @@
   <fcs_function name="propulsion/engine/thrust-lbs">
    <function>
     <product>
-     <property>hydro/rho-slug_ft3</property>
+     <property>hydro/environment/rho-slug_ft3</property>
      <value>0.000277777</value> <!-- 1/60^2 -->
      <property>propulsion/engine/engine-rpm</property>
      <property>propulsion/engine/engine-rpm</property>
@@ -343,7 +343,7 @@
    <function>
     <product>
      <value>0.0018181818</value> <!-- slug ft^2 / s^3 -> hp -->
-     <property>hydro/rho-slug_ft3</property>
+     <property>hydro/environment/rho-slug_ft3</property>
      <value>0.000004629</value>  <!-- 1/60^3 -->
      <property>propulsion/engine/engine-rpm</property>
      <property>propulsion/engine/engine-rpm</property>

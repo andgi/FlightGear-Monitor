@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -29,6 +29,9 @@
  <property value="0.0">metrics/hydro-rp-y-in</property>
  <property value="0.0">metrics/hydro-rp-z-in</property>
 
+ <property value="173.0">metrics/hydro-length-ft</property>
+ <property value="41.3333">metrics/hydro-beam-ft</property>
+
  <documentation>
   The hydrodynamic coefficients are assumed to be defined as in
   [Dawson:1934:Clipper], that is, the hull beam is used as the
@@ -51,6 +54,72 @@
  <!-- The side channel of the "wind" frame is not used. -->
  <property value="0.0">hydro/fside-lbs</property>
 
+ <channel name="Effective hull position and orientation">
+
+  <fcs_function name="hydro/hull/height-agl-ft">
+   <description>
+    The hull height with waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/height-agl-ft</property>
+     <product>
+      <value>-1.0</value>
+      <max>
+       <value>-100.0</value>
+       <min>
+        <property>hydro/environment/wave/level-at-hrp-ft</property>
+        <value>100.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/hull/pitch-deg">
+   <description>
+    The hull pitch with the trim change due to waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/pitch-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-30.0</value>
+       <min>
+        <property>hydro/orientation/wave-pitch-trim-change-deg</property>
+        <value>30.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+  <fcs_function name="hydro/hull/roll-deg">
+   <description>
+    The hull roll with the trim change due to waves applied.
+   </description>
+   <function>
+    <sum>
+     <property>hydro/roll-deg</property>
+     <product>
+      <value>1.0</value>
+      <max>
+       <value>-50.0</value>
+       <min>
+        <property>hydro/orientation/wave-roll-trim-change-deg</property>
+        <value>50.0</value>
+       </min>
+      </max>
+     </product>
+    </sum>
+   </function>
+  </fcs_function>
+
+ </channel>
 
  <channel name="Drag">
 
@@ -131,11 +200,11 @@
    <function>
     <product>
      <value>1.0</value>
-     <property> hydro/rho-slug_ft3 </property>
+     <property> hydro/environment/rho-slug_ft3 </property>
      <value> 32.185039 </value>
      <table>
-      <independentVar lookup="row">hydro/pitch-deg</independentVar>
-      <independentVar lookup="column">hydro/roll-deg</independentVar>
+      <independentVar lookup="row">hydro/hull/pitch-deg</independentVar>
+      <independentVar lookup="column">hydro/hull/roll-deg</independentVar>
       <independentVar lookup="table">hydro/height-agl-ft</independentVar>
       <tableData breakPoint="-2.0">
             -4       -2       0        2        4
@@ -246,7 +315,7 @@
    </documentation>
    <function>
     <product>
-     <value>1.0</value>
+     <value>0.25</value>
      <value>-50000000.0</value> <!-- Guess -->
      <property>hydro/yaw-tweak-factor</property>
      <property>velocities/psidot-rad_sec</property>
@@ -272,11 +341,11 @@
    <function>
     <product>
      <value>1.0</value>
-     <property> hydro/rho-slug_ft3 </property>
+     <property> hydro/environment/rho-slug_ft3 </property>
      <value> 32.185039 </value>
      <table>
-      <independentVar lookup="row">hydro/pitch-deg</independentVar>
-      <independentVar lookup="column">hydro/roll-deg</independentVar>
+      <independentVar lookup="row">hydro/hull/pitch-deg</independentVar>
+      <independentVar lookup="column">hydro/hull/roll-deg</independentVar>
       <independentVar lookup="table">hydro/height-agl-ft</independentVar>
       <tableData breakPoint="-2.0">
             -4       -2       0        2        4
@@ -334,8 +403,8 @@
   <fcs_function name="hydro/damping-pitch-moment-lbsft">
    <function>
     <product>
-     <value>1.0</value>
-     <value>-10000000000.0 </value> <!-- Guess -->
+     <value>0.0625</value>
+     <value>-1000000000.0 </value> <!-- Guess -->
      <property>velocities/thetadot-rad_sec</property>
     </product>
    </function>
@@ -358,11 +427,11 @@
    <function>
     <product>
      <value>1.0</value>
-     <property> hydro/rho-slug_ft3 </property>
+     <property> hydro/environment/rho-slug_ft3 </property>
      <value> 32.185039 </value>
      <table>
-      <independentVar lookup="row">hydro/pitch-deg</independentVar>
-      <independentVar lookup="column">hydro/roll-deg</independentVar>
+      <independentVar lookup="row">hydro/hull/pitch-deg</independentVar>
+      <independentVar lookup="column">hydro/hull/roll-deg</independentVar>
       <independentVar lookup="table">hydro/height-agl-ft</independentVar>
       <tableData breakPoint="-2.0">
             -4       -2       0        2        4
@@ -420,7 +489,7 @@
   <fcs_function name="hydro/damping-roll-moment-lbsft">
    <function>
     <product>
-     <value>1.0</value>
+     <value>2.00</value>
      <value>-1000000.0</value> <!-- Guess -->
      <property>velocities/phidot-rad_sec</property>
     </product>

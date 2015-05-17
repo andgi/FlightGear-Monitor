@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -233,16 +233,16 @@
   <!-- The 9in Dahlgren guns weighed about 15700lbs each.
        ([Peterkin:1985:DRM], p.500) -->
   <!-- Gun carriage: about 3200lbs (NOAA) -->
-  <pointmass name="IX in Dahlgren gun">
-   <weight unit="LBS"> 15700.0 </weight>
+  <pointmass name="IX in. Dahlgren gun w. carriage">
+   <weight unit="LBS"> 18900.0 </weight>
    <location unit="M">
     <x> 24.450 </x>
     <y> -0.762 </y>
     <z>  1.650 </z>
    </location>
   </pointmass>
-  <pointmass name="IX in Dahlgren gun">
-   <weight unit="LBS"> 15700.0 </weight>
+  <pointmass name="IX in. Dahlgren gun w. carriage">
+   <weight unit="LBS"> 18900.0 </weight>
    <location unit="M">
     <x> 24.450 </x>
     <y> -0.762 </y>
