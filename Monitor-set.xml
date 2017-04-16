@@ -2,7 +2,7 @@
 <!--
   U.S.S. Monitor.
 
-  Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2012 - 2017  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -12,6 +12,18 @@
   <description>U.S.S. Monitor.</description>
   <author>Anders Gidenstam</author>
   <aircraft-version>2015-05-17</aircraft-version>
+
+  <long-description>
+USS Monitor was one of the first ironclad warships and also one of the very first with its guns in a rotating armoured turret. It was designed by the Swedish-American engineer and inventor John Ericsson and built to a government contract in not much more than a hundered days during the autumn and winter 1861. The 54 meter long ship was powered by a 320 indicated hp steam engine and carried two 11 in smoothbore Dahlgren guns in its revolving gun turret.
+  </long-description>
+
+  <tags>
+   <tag>seacraft</tag>
+   <!-- tag>steam-engine</tag -->
+   <tag>single-engine</tag>
+   <!-- tag>1860s</tag -->
+   <!-- tag>civilwar</tag -->
+  </tags>
 
   <status type="string">alpha</status>
   <rating>
