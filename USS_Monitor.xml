@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012 - 2015  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,7 +30,7 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2012-07-14</filecreationdate>
-  <version>$Id$</version>
+  <version>2018-11-19</version>
 
   <description>Models the U.S.S. Monitor / Ericsson Battery.</description>
 
@@ -362,80 +362,27 @@
    </direction>
   </force>
 
-  <force name="hydro-pitch[0]" frame="LOCAL" unit="LBS">
-   <location unit="M">
-    <x>  25.1952 </x>
-    <y>   0.00 </y>
-    <z>   0.00 </z>
-   </location>
+  <moment name="hydro-pitch" frame="BODY" unit="LBSFT">
    <direction>
     <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z>-1.0 </z>
+    <y> 1.0 </y>
+    <z> 0.0 </z>
    </direction>
-  </force>
-  <force name="hydro-pitch[1]" frame="LOCAL" unit="LBS">
-   <location unit="M">
-    <x>  25.8048 </x>
-    <y>   0.00 </y>
-    <z>   0.00 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z>-1.0 </z>
-   </direction>
-  </force>
-
-  <force name="hydro-roll[0]" frame="LOCAL" unit="LBS">
-   <location unit="M">
-    <x>  25.50 </x>
-    <y>  -0.3048 </y>
-    <z>   0.00 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z>-1.0 </z>
-   </direction>
-  </force>
-  <force name="hydro-roll[1]" frame="LOCAL" unit="LBS">
-   <location unit="M">
-    <x>  25.50 </x>
-    <y>   0.3048 </y>
-    <z>   0.00 </z>
-   </location>
-   <direction>
-    <x> 0.0 </x>
-    <y> 0.0 </y>
-    <z>-1.0 </z>
-   </direction>
-  </force>
-
-  <force name="hydro-yaw[0]" frame="BODY" unit="LBS">
-   <location unit="M">
-    <x>  25.50 </x>
-    <y>  -0.3048 </y>
-    <z>   0.00 </z>
-   </location>
+  </moment>
+  <moment name="hydro-roll" frame="BODY" unit="LBSFT">
    <direction>
     <x> 1.0 </x>
     <y> 0.0 </y>
     <z> 0.0 </z>
    </direction>
-  </force>
-  <force name="hydro-yaw[1]" frame="BODY" unit="LBS">
-   <location unit="M">
-    <x>  25.50 </x>
-    <y>   0.3048 </y>
-    <z>   0.00 </z>
-   </location>
+  </moment>
+  <moment name="hydro-yaw" frame="BODY" unit="LBSFT">
    <direction>
-    <x> 1.0 </x>
+    <x> 0.0 </x>
     <y> 0.0 </y>
-    <z> 0.0 </z>
+    <z> 1.0 </z>
    </direction>
-  </force>
+  </moment>
 
   <force name="propeller" frame="BODY" unit="LBS">
    <location unit="M">
