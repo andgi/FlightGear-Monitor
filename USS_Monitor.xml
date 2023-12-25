@@ -3,7 +3,7 @@
 
   U.S.S. Monitor "flight" model for JSBSim.
 
-    Copyright (C) 2012 - 2018  Anders Gidenstam  (anders(at)gidenstam.org)
+    Copyright (C) 2012 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
 
     This program is free software; you can redistribute it and/or modify
     it under the terms of the GNU General Public License as published by
@@ -30,13 +30,13 @@
   <email>anders at gidenstam dot org</email>
 
   <filecreationdate>2012-07-14</filecreationdate>
-  <version>2018-11-19</version>
+  <version>2023-12-25</version>
 
   <description>Models the U.S.S. Monitor / Ericsson Battery.</description>
 
   <license>
-   <licenseName>GPL</licenseName>
-   <licenseURL>http://www.gnu.org/licenses/gpl.html</licenseURL>
+   <licenseName>GPL v2+</licenseName>
+   <licenseURL>http://www.gnu.org/licenses/old-licenses/gpl-2.0.html</licenseURL>
   </license>
   <note>
    This model was created using publicly available data, publicly available
@@ -162,9 +162,9 @@
     Iyz = Iyz_hull + Iyz_turret
 
   </documentation>
-  <ixx unit="KG*M2"> 7.9726e+06 </ixx>
-  <iyy unit="KG*M2"> 1.2016e+08 </iyy>
-  <izz unit="KG*M2"> 1.2671e+08 </izz>
+  <ixx unit="KG*M2">   7972600 </ixx>
+  <iyy unit="KG*M2"> 120160000 </iyy>
+  <izz unit="KG*M2"> 126710000 </izz>
   <emptywt unit="LBS" > 1332111 </emptywt>
   <location name="CG" unit="M">
    <x> 25.45 </x>
@@ -265,6 +265,7 @@
  <ground_reactions>
   <documentation>
    The hydrostatic interactions of the hull are modelled by external forces.
+   Remove these in JSBSim/standalone.
   </documentation>
 
   <contact type="STRUCTURE" name="BOW">

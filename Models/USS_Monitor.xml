@@ -2,7 +2,7 @@
 <!--
   U.S.S. Monitor.
 
-  Copyright (C) 2012  Anders Gidenstam  (anders(at)gidenstam.org)
+  Copyright (C) 2012 - 2023  Anders Gidenstam  (anders(at)gidenstam.org)
   This file is licensed under the GPL license version 2 or later.
 -->
 <PropertyList>
@@ -84,6 +84,17 @@
   </axis>
  </animation>
 
+ <!-- Water ================================================================-->
+ <model>
+  <name>Water</name>
+  <path>Aircraft/MTB_20m/Models/water.xml</path>
+  <offsets>
+   <!-- x/y/z == back/right/up -->
+   <x-m>25.50</x-m>
+   <y-m>0.00</y-m>
+   <z-m>3.00</z-m>
+  </offsets>
+ </model>
 
  <!-- LOD for the model as a whole -->
  <animation>

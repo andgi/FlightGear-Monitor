@@ -1,0 +1,11 @@
+Anders Gidenstam  (anders(at)gidenstam.org)
+  - USS Monitor FlightGear configuration
+  - USS Monitor Flight/Hydrodynamics Model configuration
+  - USS Monitor 3d model
+
+The model borrows content from the following authors' contributions
+to FlightGear:
+
+Dependencies (i.e. install these aircraft):
+
+Aircraft/MTB_20m        (Aircraft/MTB_20m/Models/water.xml)
