@@ -1,0 +1,125 @@
+<?xml version="1.0"?>
+<?xml-stylesheet type="text/xsl" href="http://www.jsbsim.org/JSBSimScript.xsl"?>
+<runscript xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+           xsi:noNamespaceSchemaLocation="http://jsbsim.sf.net/JSBSimScript.xsd"
+           name="USS Monitor start and acceleration test">
+ <description>This is a start and acceleration test for USS Monitor.</description>
+
+ <use aircraft="USS_Monitor" initialize="dev/fdm/reset00"/>
+ <run start="0.0" end="240" dt="0.002083333333">
+
+  <property value="0.0">simulation/notify-time-trigger</property>
+  <property value="20.0">simulation/rpm-check-time-trigger</property>
+  <property value="0.0">hydro/water-level-ft</property>
+
+  <event name="Initialize 1">
+   <description>Setup the world</description>
+   <condition>
+    simulation/sim-time-sec GE 0.0
+   </condition>
+   <notify>
+    <property>inertia/cg-x-in</property>
+    <property>inertia/weight-lbs</property>
+    <property>inertia/empty-weight-lbs</property>
+   </notify>
+   <!-- Set sea level to the terrain elevation. -->
+   <set name="hydro/water-level-ft">
+    <function>
+     <property>ic/terrain-elevation-ft</property>
+    </function>
+   </set>
+  </event>
+
+  <event name="Open throttle and set cutoff point">
+   <description>Open up the throttle and set cutoff point</description>
+   <condition>
+    simulation/sim-time-sec GE 20.0
+   </condition>
+   <notify>
+    <property>position/distance-from-start-mag-mt</property>
+    <property>attitude/heading-true-rad</property>
+    <property>hydro/pitch-deg</property>
+    <property>hydro/roll-deg</property>
+    <property>hydro/beta-deg</property>
+   </notify>
+   <set name="fcs/throttle-cmd-norm"
+        value="1.00" action="FG_RAMP" tc ="5.0"/>
+   <set name="fcs/mixture-cmd-norm"
+        value="0.50" action="FG_RAMP" tc ="5.0"/>
+  </event>
+
+  <event name="Reduce throttle" type="FG_DELTA" persistent="true">
+   <description>Check engine RPM at 1 seconds intervals</description>
+   <condition>
+    simulation/sim-time-sec GE simulation/rpm-check-time-trigger
+    propulsion/engine[0]/engine-rpm GT 55
+   </condition>
+   <notify>
+    <property>fcs/throttle-cmd-norm[0]</property>
+    <property>fcs/mixture-cmd-norm[0]</property>
+    <property>propulsion/engine[0]/engine-rpm</property>
+   </notify>
+   <set name="fcs/throttle-cmd-norm[0]"  value="-0.05" type="FG_DELTA"/>
+  </event>
+
+  <event name="Increase throttle" type="FG_DELTA" persistent="true">
+   <description>Check engine RPM at 1 seconds intervals</description>
+   <condition>
+    simulation/sim-time-sec GE simulation/rpm-check-time-trigger
+    propulsion/engine[0]/engine-rpm LT 45
+    fcs/throttle-cmd-norm[0] LT 0.96
+   </condition>
+   <notify>
+    <property>fcs/throttle-cmd-norm[0]</property>
+    <property>fcs/mixture-cmd-norm[0]</property>
+    <property>propulsion/engine[0]/engine-rpm</property>
+   </notify>
+   <set name="fcs/throttle-cmd-norm[0]"  value="0.05" type="FG_DELTA"/>
+  </event>
+
+  <event name="Increase simulation/rpm-check-time-trigger by 1.0 sec" type="FG_DELTA" persistent="true">
+   <description>Check engine RPM at 1 seconds intervals</description>
+   <condition>
+    simulation/sim-time-sec GE simulation/rpm-check-time-trigger
+   </condition>
+   <set name="simulation/rpm-check-time-trigger" value="1.0" type="FG_DELTA"/>
+  </event>
+
+  <event name="Time Notify" type="FG_DELTA" persistent="true">
+   <description>Output message at 5 seconds intervals</description>
+   <condition>
+    simulation/sim-time-sec GE simulation/notify-time-trigger
+   </condition>
+   <notify>
+    <property>position/distance-from-start-mag-mt</property>
+    <property>hydro/v-kt</property>
+    <property>hydro/vbx-fps</property>
+    <property>hydro/vby-fps</property>
+    <property>hydro/qbar-u-psf</property>
+    <property>hydro/true-course-deg</property>
+    <property>hydro/beta-deg</property>
+    <property>hydro/pitch-deg</property>
+    <property>hydro/roll-deg</property>
+    <property>hydro/height-agl-ft</property>
+    <property>hydro/fdrag-lbs</property>
+    <property>hydro/fbz-lbs</property>
+    <property>hydro/buoyancy-lbs</property>
+    <property>hydro/yaw-moment-lbsft</property>
+    <property>hydro/pitch-moment-lbsft</property>
+    <property>hydro/roll-moment-lbsft</property>
+    <property>fcs/throttle-cmd-norm[0]</property>
+    <property>fcs/mixture-cmd-norm[0]</property>
+    <property>propulsion/boiler/steam-absolute-pressure-psi</property>
+    <property>propulsion/engine/steam-mean-pressure-psi</property>
+    <property>propulsion/engine/power-available-hp</property>
+    <property>propulsion/engine/power-required-hp</property>
+    <property>propulsion/engine/power-difference-hp</property>
+    <property>propulsion/engine/engine-rpm</property>
+    <property>propulsion/engine/thrust-lbs</property>
+   </notify>
+   <set name="simulation/notify-time-trigger" value="5" type="FG_DELTA"/>
+  </event>
+
+ </run>
+
+</runscript>
